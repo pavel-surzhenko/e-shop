@@ -1,5 +1,5 @@
-function App() {
-    return <div className='App'>6</div>
-}
+import { Carts } from './components/carts'
 
-export default App
+export const App: React.FC = () => {
+    return <Carts />
+}
