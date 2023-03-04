@@ -71,7 +71,7 @@ export const Header = () => {
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </Search>
-                <IconButton color='inherit'>
+                <IconButton color='inherit' sx={{ marginLeft: '20px' }}>
                     <ShoppingBasket />
                 </IconButton>
             </Toolbar>
