@@ -1,2 +1,3 @@
 export { Header } from './header'
-export { Cards } from './cards'
+export { ProductCardList } from './cards'
+export { ProductCard } from './card'

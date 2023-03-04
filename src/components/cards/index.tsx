@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
+import { Grid } from '@mui/material'
 import { api } from '../../api/api'
 import { ProductCard, IProductCard } from '../card'
 
-export const Cards: React.FC = () => {
+export const ProductCardList: React.FC = () => {
     const [carts, setCarts] = useState<IProductCard[]>([])
 
     useEffect(() => {
@@ -13,9 +14,13 @@ export const Cards: React.FC = () => {
         fetchCarts()
     }, [])
 
-    const cartsJSX = carts.map((cart) => <ProductCard key={cart.id} {...cart} />)
+    const cardsJSX = carts.map((cart) => (
+        <ProductCard key={cart.id} {...cart} />
+    ))
 
-    console.log(carts)
-
-    return <div>{cartsJSX}</div>
+    return (
+        <Grid container spacing={2} >
+            {cardsJSX}
+        </Grid>
+    )
 }
