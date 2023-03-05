@@ -1,4 +1,4 @@
-import { Header } from './components'
+import { Footer, Header } from './components'
 import { ProductCardsPage } from './pages'
 
 export const App: React.FC = () => {
@@ -6,6 +6,7 @@ export const App: React.FC = () => {
         <>
             <Header />
             <ProductCardsPage />
+            <Footer />
         </>
     )
 }
