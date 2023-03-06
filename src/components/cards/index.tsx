@@ -49,14 +49,20 @@ export const ProductCardList: React.FC = () => {
 
     const handleChangeFilter = (event: SelectChangeEvent) => {
         setFilter(event.target.value)
-        if(event.target.value === 'priceDown') {
-            const sortItems = carts.sort((item1, item2) => item1.price - item2.price )
+        if (event.target.value === 'priceDown') {
+            const sortItems = carts.sort(
+                (item1, item2) => item1.price - item2.price
+            )
             setCarts(sortItems)
-        } else if(event.target.value === 'priceUp') {
-            const sortItems = carts.sort((item1, item2) => item2.price - item1.price )
+        } else if (event.target.value === 'priceUp') {
+            const sortItems = carts.sort(
+                (item1, item2) => item2.price - item1.price
+            )
             setCarts(sortItems)
-        } else if(event.target.value === 'rating') {
-            const sortItems = carts.sort((item1, item2) => item2.rating.rate - item1.rating.rate )
+        } else if (event.target.value === 'rating') {
+            const sortItems = carts.sort(
+                (item1, item2) => item2.rating.rate - item1.rating.rate
+            )
             setCarts(sortItems)
         }
     }
@@ -67,7 +73,13 @@ export const ProductCardList: React.FC = () => {
 
     return (
         <>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    flexDirection: { xs: 'column', md: 'row' },
+                }}
+            >
                 <ToggleButtonGroup
                     size='small'
                     color='info'
@@ -85,7 +97,7 @@ export const ProductCardList: React.FC = () => {
                     <ToggleButton value='jewelery'>Jewelry</ToggleButton>
                     <ToggleButton value='electronics'>Electronics</ToggleButton>
                 </ToggleButtonGroup>
-                <FormControl sx={{ minWidth: '100px' }} size='small'>
+                <FormControl sx={{ minWidth: '100px', mb: '20px' }} size='small'>
                     <InputLabel id='filter'>filter</InputLabel>
                     <Select
                         autoWidth
@@ -93,11 +105,23 @@ export const ProductCardList: React.FC = () => {
                         value={filter}
                         label='price'
                         onChange={handleChangeFilter}
-                        sx={{color: 'primary.main'}}
+                        sx={{ color: 'primary.main' }}
                     >
-                        <MenuItem sx={{color: 'primary.main'}} value='priceDown'>Price ↓</MenuItem>
-                        <MenuItem sx={{color: 'primary.main'}} value='priceUp'>Price ↑</MenuItem>
-                        <MenuItem sx={{color: 'primary.main'}} value='rating'>Rating</MenuItem>
+                        <MenuItem
+                            sx={{ color: 'primary.main' }}
+                            value='priceDown'
+                        >
+                            Price ↓
+                        </MenuItem>
+                        <MenuItem
+                            sx={{ color: 'primary.main' }}
+                            value='priceUp'
+                        >
+                            Price ↑
+                        </MenuItem>
+                        <MenuItem sx={{ color: 'primary.main' }} value='rating'>
+                            Rating
+                        </MenuItem>
                     </Select>
                 </FormControl>
             </Box>

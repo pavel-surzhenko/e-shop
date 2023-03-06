@@ -8,6 +8,7 @@ import {
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
+import { useNavigate } from 'react-router-dom'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -51,11 +52,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 export const Header = () => {
+    const navigate = useNavigate()
 
     return (
         <AppBar position='static'>
             <Toolbar>
                 <Typography
+                    onClick={() => navigate('/')}
                     variant='h6'
                     component='span'
                     sx={{ flexGrow: 1, minWidth: '70px', marginRight: '10px' }}
@@ -72,10 +75,7 @@ export const Header = () => {
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </Search>
-                <IconButton
-                    color='inherit'
-                    sx={{ marginLeft: '20px' }}
-                >
+                <IconButton color='inherit' sx={{ marginLeft: '20px' }}>
                     <ShoppingBasket />
                 </IconButton>
             </Toolbar>

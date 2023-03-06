@@ -16,7 +16,7 @@ import { productListActions } from '../../redux/actions'
 export const ProductCard: React.FC<IProductCard> = (props) => {
     const { image, title, category, price, rating, id } = props
     const dispatch = useDispatch()
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleClick = () => {
         dispatch(productListActions.setItemId(id))
@@ -53,6 +53,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
+                        onClick={() => navigate(`/item/${id}`)}
                         gutterBottom
                         variant='subtitle1'
                         component='div'
@@ -60,7 +61,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                         {title}
                     </Typography>
                 </CardContent>
-                <Rating name="read-only" value={rating.rate} readOnly />
+                <Rating name='read-only' value={rating.rate} readOnly />
                 <CardActions sx={{ justifyContent: 'space-between' }}>
                     <Typography variant='h6'>{price}$</Typography>
                     <Button
