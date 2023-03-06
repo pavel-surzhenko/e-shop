@@ -14,6 +14,11 @@ export const api = {
             const { data } = await axios.get<IProductCard[]>(`${ROOT_URL}/products/category/${category}`)
 
             return data
+        },
+        async getCartsById(id:string): Promise<IProductCard> {
+            const { data } = await axios.get<IProductCard>(`${ROOT_URL}/products/${id}`)            
+
+            return data
         }
     }
 };

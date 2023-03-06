@@ -1,0 +1,1 @@
+export { useItemDetails } from './useItemDetails'

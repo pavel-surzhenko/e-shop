@@ -9,9 +9,18 @@ import {
     Typography,
 } from '@mui/material'
 import { ShoppingCart } from '@mui/icons-material'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { productListActions } from '../../redux/actions'
 
 export const ProductCard: React.FC<IProductCard> = (props) => {
-    const { image, title, category, price, rating } = props
+    const { image, title, category, price, rating, id } = props
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        dispatch(productListActions.setItemId(id))
+    }
 
     return (
         <Grid item xs={12} md={4} lg={3}>
@@ -24,6 +33,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                     display: 'flex',
                     flexDirection: 'column',
                 }}
+                onClick={handleClick}
             >
                 <Typography
                     gutterBottom
@@ -39,6 +49,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                     height='150'
                     image={`${image}`}
                     sx={{ objectFit: 'contain' }}
+                    onClick={() => navigate(`/item/${id}`)}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                     <Typography
@@ -67,7 +78,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
 }
 
 export interface IProductCard {
-    id: number
+    id: string
     title: string
     price: number
     category: string
