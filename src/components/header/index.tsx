@@ -8,7 +8,6 @@ import {
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { useDispatch, useSelector } from 'react-redux'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
