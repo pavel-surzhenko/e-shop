@@ -39,6 +39,10 @@
         "react/prop-types": "off",
         "react/jsx-props-no-spreading": "off",
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "warn"
+        "@typescript-eslint/no-unused-vars": "warn",
+        "allowForLoopAfterthoughts": "off",
+        "default-param-last": "off",
+        "@typescript-eslint/default-param-last": ["off"],
+        "import/no-extraneous-dependencies": ["off"]
     }
 }

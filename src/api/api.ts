@@ -9,6 +9,11 @@ export const api = {
             const { data } = await axios.get<IProductCard[]>(`${ROOT_URL}/products`)
 
             return data
+        },
+        async getCartsCategory(category: string): Promise<IProductCard[]> {
+            const { data } = await axios.get<IProductCard[]>(`${ROOT_URL}/products/category/${category}`)
+
+            return data
         }
     }
 };
