@@ -51,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }))
 
-export const Header = () => {
+export const Header:React.FC = () => {
     const navigate = useNavigate()
 
     return (

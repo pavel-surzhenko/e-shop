@@ -13,7 +13,7 @@ import {
 import { useParams } from 'react-router-dom'
 import { useItemDetails } from '../../hooks'
 
-export const CardDetails = () => {
+export const CardDetails:React.FC = () => {
     const { itemId } = useParams()
 
     const { data, isFetched } = useItemDetails(itemId as string)

@@ -25,7 +25,7 @@ export const ProductCardList: React.FC = () => {
 
     useEffect(() => {
         dispatch(productListActions.fetchTaskAsync())
-    }, [])
+    }, [dispatch])
 
     const items = useSelector(getItems)
 

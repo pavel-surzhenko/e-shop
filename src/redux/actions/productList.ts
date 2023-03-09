@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from "../../api"
 import { IProductCard } from "../../components/card"
 import { AppThunk } from "../init/store"

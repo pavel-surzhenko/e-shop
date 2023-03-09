@@ -7,7 +7,7 @@ const initialState = {
     error: false,
 };
 
-export const authReducer = (state = initialState, action: AnyAction) => {
+export const authReducer = (state = initialState, action: AnyAction): AuthState => {
     switch (action.type) {
         case authTypes.SET_TOKEN: {
             return {
@@ -39,3 +39,9 @@ export const authReducer = (state = initialState, action: AnyAction) => {
         }
     }
 };
+
+type AuthState = {
+    token: string;
+    errorMessage: string;
+    error: boolean;
+}

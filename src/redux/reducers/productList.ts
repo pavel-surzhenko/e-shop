@@ -1,13 +1,14 @@
 import { AnyAction } from 'redux'
+import { IProductCard } from '../../components/card'
 import { productListTypes } from "../types"
 
-const initialState = {
+const initialState : ProductListState = {
     id: '',
     items: [],
     isFetching: false,
 }
 
-export const productListReducer = (state = initialState, action: AnyAction) => {
+export const productListReducer = (state = initialState, action: AnyAction): ProductListState => {
     switch (action.type) {
         case productListTypes.START_FETCHING: {
             return {
@@ -42,4 +43,10 @@ export const productListReducer = (state = initialState, action: AnyAction) => {
             return state
         }
     }
+}
+
+type ProductListState = {
+    id: string;
+    items: IProductCard[];
+    isFetching: boolean;
 }
