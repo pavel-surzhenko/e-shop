@@ -44,6 +44,7 @@
         "default-param-last": "off",
         "@typescript-eslint/default-param-last": ["off"],
         "import/no-extraneous-dependencies": ["off"],
-        "import/no-cycle": "off"
+        "import/no-cycle": "off",
+        "react/self-closing-comp": "off"
     }
 }

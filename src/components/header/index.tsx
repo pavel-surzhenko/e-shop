@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import { styled, alpha } from '@mui/material/styles'
 import { ShoppingBasket } from '@mui/icons-material'
 import {
@@ -8,7 +11,7 @@ import {
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { useNavigate } from 'react-router-dom'
+import { cartActions } from '../../redux/actions'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -53,6 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const Header:React.FC = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     return (
         <AppBar position='static'>
@@ -75,7 +79,7 @@ export const Header:React.FC = () => {
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </Search>
-                <IconButton color='inherit' sx={{ marginLeft: '20px' }}>
+                <IconButton color='inherit' sx={{ marginLeft: '20px' }} onClick={()=> dispatch(cartActions.setIsCartOpen())}>
                     <ShoppingBasket />
                 </IconButton>
             </Toolbar>

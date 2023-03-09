@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Footer, Header } from './components'
+import { CartMenu, Footer, Header } from './components'
 import { ProductCardsPage, ProductDetailsPage } from './pages'
 
 export const App: React.FC = () => {
@@ -10,6 +10,7 @@ export const App: React.FC = () => {
                 <Route path='/' element={<ProductCardsPage />} />
                 <Route path='item/:itemId' element={<ProductDetailsPage />} />
             </Routes>
+            <CartMenu />
             <Footer />
         </>
     )
