@@ -80,6 +80,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
 }
 
 export interface IProductCard {
+    count: number
     id: string
     title: string
     price: number
