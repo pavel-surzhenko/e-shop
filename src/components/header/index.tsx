@@ -61,11 +61,11 @@ export const Header:React.FC = () => {
                     onClick={() => navigate('/')}
                     variant='h6'
                     component='span'
-                    sx={{ flexGrow: 1, minWidth: '70px', marginRight: '10px' }}
+                    sx={{ minWidth: '70px', marginRight: 'auto', cursor:'pointer' }}
                 >
                     E-Shop
                 </Typography>
-                <Search>
+                <Search >
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>

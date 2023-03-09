@@ -48,7 +48,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                     alt={title}
                     height='150'
                     image={`${image}`}
-                    sx={{ objectFit: 'contain' }}
+                    sx={{ objectFit: 'contain', cursor:'pointer' }}
                     onClick={() => navigate(`/item/${id}`)}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -57,6 +57,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                         gutterBottom
                         variant='subtitle1'
                         component='div'
+                        sx={{cursor: 'pointer'}}
                     >
                         {title}
                     </Typography>
