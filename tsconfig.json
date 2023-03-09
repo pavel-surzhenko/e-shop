@@ -20,7 +20,8 @@
         "strictNullChecks": true,
         "noEmitOnError": true,
         "sourceMap": false,
-        "declaration":false
+        "declaration":false,
+        "incremental": true
     },
     "include": ["src"]
 }

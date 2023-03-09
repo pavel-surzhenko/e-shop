@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 
 import { ProductCard, IProductCard } from '../card'
-import { getItems } from '../../redux/selectors'
+import { getItemsProduct } from '../../redux/selectors'
 import { productListActions } from '../../redux/actions'
 
 export const ProductCardList: React.FC = () => {
@@ -27,7 +27,7 @@ export const ProductCardList: React.FC = () => {
         dispatch(productListActions.fetchTaskAsync())
     }, [dispatch])
 
-    const items = useSelector(getItems)
+    const items = useSelector(getItemsProduct)
 
     useEffect(() => {
         setCarts(items.concat([]))
@@ -68,7 +68,7 @@ export const ProductCardList: React.FC = () => {
     }
 
     const cardsJSX = carts.map((cart) => (
-        <ProductCard key={cart.id} {...cart} />
+            <ProductCard key={cart.id} {...cart} />
     ))
 
     return (

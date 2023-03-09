@@ -28,12 +28,19 @@ export const CartMenu: React.FC = () => {
     const totalPrice = cart.reduce(
         (total, item) => total + item.count * item.price,
         0
-    )
+    ).toFixed(2)
 
     const itemsJSX = cart.map((item) => (
-        <>
-            <FlexBox padding='15px 0'>
-                <Box flex='1 1 40%'>
+        <Box key={item.id}>
+            <FlexBox padding='15px 0' key={item.id}>
+                <Box
+                    flex='1 1 40%'
+                    onClick={() => {
+                        navigate(`/item/${item.id}`)
+                        dispatch(cartActions.setIsCartOpen())
+                    }}
+                    sx={{cursor: 'pointer'}}
+                >
                     <img
                         alt={item.title}
                         width='123px'
@@ -79,7 +86,7 @@ export const CartMenu: React.FC = () => {
                 </Box>
             </FlexBox>
             <Divider />
-        </>
+        </Box>
     ))
 
     return (
@@ -98,7 +105,7 @@ export const CartMenu: React.FC = () => {
             >
                 <Box padding='30px' overflow='auto' height='100%'>
                     <FlexBox mb='15px'>
-                        <Typography variant='h3'>Shopping bag</Typography>
+                        <Typography variant='h4'>Shopping bag</Typography>
                         <IconButton
                             onClick={() =>
                                 dispatch(cartActions.setIsCartOpen())
@@ -111,8 +118,10 @@ export const CartMenu: React.FC = () => {
                     <Box>{itemsJSX}</Box>
                     <Box m='20px 0'>
                         <FlexBox m='20px 0'>
-                            <Typography fontWeight='bold'>SUBTOTAL</Typography>
-                            <Typography fontWeight='bold'>
+                            <Typography fontWeight='bold' variant='h6'>
+                                TOTAL
+                            </Typography>
+                            <Typography fontWeight='bold' variant='h6'>
                                 ${totalPrice}
                             </Typography>
                         </FlexBox>

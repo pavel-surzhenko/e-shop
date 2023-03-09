@@ -32,13 +32,6 @@ export const productListReducer = (state = initialState, action: AnyAction): Pro
             }
         }
 
-        case productListTypes.SET_SELECTED_ITEM: {
-            return {
-                ...state,
-                id: action?.payload
-            }
-        }
-
         default: {
             return state
         }

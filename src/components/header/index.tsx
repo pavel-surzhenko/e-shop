@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { styled, alpha } from '@mui/material/styles'
 import { ShoppingBasket } from '@mui/icons-material'
 import {
     AppBar,
+    Badge,
     IconButton,
     InputBase,
     Toolbar,
@@ -12,6 +13,7 @@ import {
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import { cartActions } from '../../redux/actions'
+import { getCart } from '../../redux/selectors'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -54,9 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }))
 
-export const Header:React.FC = () => {
+export const Header: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const cart = useSelector(getCart)    
 
     return (
         <AppBar position='static'>
@@ -65,11 +68,15 @@ export const Header:React.FC = () => {
                     onClick={() => navigate('/')}
                     variant='h6'
                     component='span'
-                    sx={{ minWidth: '70px', marginRight: 'auto', cursor:'pointer' }}
+                    sx={{
+                        minWidth: '70px',
+                        marginRight: 'auto',
+                        cursor: 'pointer',
+                    }}
                 >
                     E-Shop
                 </Typography>
-                <Search >
+                <Search>
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>
@@ -79,9 +86,26 @@ export const Header:React.FC = () => {
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </Search>
-                <IconButton color='inherit' sx={{ marginLeft: '20px' }} onClick={()=> dispatch(cartActions.setIsCartOpen())}>
-                    <ShoppingBasket />
-                </IconButton>
+                <Badge
+                    badgeContent={cart.length}
+                    color='error'
+                    invisible={cart.length === 0}
+                    sx={{
+                            right: 5,
+                            top: 5,
+                            padding: '0 3px',
+                            height: '14px',
+                            minWidth: '13px',
+                    }}
+                >
+                    <IconButton
+                        color='inherit'
+                        sx={{ marginLeft: '20px' }}
+                        onClick={() => dispatch(cartActions.setIsCartOpen())}
+                    >
+                        <ShoppingBasket />
+                    </IconButton>
+                </Badge>
             </Toolbar>
         </AppBar>
     )

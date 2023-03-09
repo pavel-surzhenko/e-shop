@@ -10,10 +10,14 @@ import {
     Button,
     Skeleton,
 } from '@mui/material'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useItemDetails } from '../../hooks'
+import { cartActions } from '../../redux/actions'
 
 export const CardDetails:React.FC = () => {
+    const dispatch= useDispatch()
+    const count = 1
     const { itemId } = useParams()
 
     const { data, isFetched } = useItemDetails(itemId as string)
@@ -128,6 +132,10 @@ export const CardDetails:React.FC = () => {
                                     color='primary'
                                     variant='contained'
                                     endIcon={<ShoppingCart />}
+                                    onClick={()=> {
+                                        dispatch(cartActions.addToCart({...data, count})) 
+                                        dispatch(cartActions.setIsCartOpen())}
+                                    }
                                 >
                                     Buy
                                 </Button>

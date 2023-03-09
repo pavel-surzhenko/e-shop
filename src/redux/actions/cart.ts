@@ -1,15 +1,15 @@
-import { IProductCard } from "../../components/card"
+import { IProductCart } from "../reducers"
 import { cartTypes } from "../types"
 
 export const cartActions = Object.freeze({
-    setItems: (items: IProductCard[]) => {
+    setItems: (items: IProductCart[]) => {
         return {
             type: cartTypes.SET_ITEMS,
             payload: items
         }
     },
 
-    addToCart: (item: IProductCard[]) => {
+    addToCart: (item: IProductCart) => {
         return {
             type: cartTypes.ADD_TO_CART,
             payload: { item }

@@ -6,13 +6,6 @@ import { productListTypes } from "../types"
 import { authActions } from "./auth"
 
 export const productListActions = Object.freeze({
-    setItemId: (itemId: string) => {
-        return {
-            type: productListTypes.SET_SELECTED_ITEM,
-            payload: itemId
-        }
-    },
-
     startFetching: () => {
         return {
             type: productListTypes.START_FETCHING,

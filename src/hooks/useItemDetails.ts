@@ -12,6 +12,6 @@ export const useItemDetails = (id: string): ItemDetailsReturn => {
 };
 
 type ItemDetailsReturn = {
-    data: IProductCard | Record<string, never>
+    data: IProductCard
     isFetched: boolean
 }

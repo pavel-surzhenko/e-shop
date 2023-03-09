@@ -18,10 +18,14 @@ export const cartReducer = (state = initialState, action: AnyAction): CartState 
         }
 
         case cartTypes.ADD_TO_CART: {
-            return {
-                ...state,
-                cart: [...state.cart, action?.payload.item]
-            }
+            const itemToAdd = action.payload.item;
+            const existingItem = state.cart.find(item => item.id === itemToAdd.id);
+
+            const updatedCart = existingItem
+                ? state.cart.map(item => (item.id === existingItem.id ? { ...item, count: item.count + 1 } : item))
+                : [...state.cart, { ...itemToAdd, count: 1 }];
+
+            return { ...state, cart: updatedCart };
         }
 
         case cartTypes.REMOVE_FROM_CART: {
@@ -67,8 +71,12 @@ export const cartReducer = (state = initialState, action: AnyAction): CartState 
     }
 }
 
+export interface IProductCart extends IProductCard {
+    count: number
+}
+
 type CartState = {
     isCartOpen: boolean
-    cart: IProductCard[]
-    items: IProductCard[]
+    cart: IProductCart[]
+    items: IProductCart[]
 }
