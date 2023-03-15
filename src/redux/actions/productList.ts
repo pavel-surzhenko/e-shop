@@ -18,18 +18,18 @@ export const productListActions = Object.freeze({
         }
     },
 
-    fetchTask: (items: IProductCard[]) => {
+    fetchCards: (items: IProductCard[]) => {
         return {
             type: productListTypes.FETCH_ITEMS,
             payload: items,
         }
     },
 
-    fetchTaskAsync: (): AppThunk => async (dispatch) => {
+    fetchCardsAsync: (): AppThunk => async (dispatch) => {
         try {
             dispatch(productListActions.startFetching())
             const items = await api.carts.getCarts()
-            dispatch(productListActions.fetchTask(items))
+            dispatch(productListActions.fetchCards(items))
         } catch (error: any) {
             const { message } = error;
             dispatch(authActions.setError(message))

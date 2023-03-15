@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -19,7 +19,7 @@ import {
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { cartActions } from '../../redux/actions'
+import { cartActions, productListActions } from '../../redux/actions'
 import { getCart, getItemsProduct } from '../../redux/selectors'
 
 const Search = styled('div')(({ theme }) => ({
@@ -67,6 +67,11 @@ export const Header: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
+
+    useEffect(()=>{
+        dispatch(productListActions.fetchCardsAsync())
+    }, [dispatch])
+
     const allItems = useSelector(getItemsProduct)
 
     const [searchItemName, setSearchItemName] = useState('')
@@ -78,21 +83,22 @@ export const Header: React.FC = () => {
     )
 
     const searchItemsListJSX = searchItems.map((item) => (
-        <ListItem
-            onMouseDown={() => navigate(`/item/${item.id}`)}
-            sx={{ gap: '10px', cursor: 'pointer' }}
-            key={item.id}
-        >
-            <ListItemAvatar>
-                <Avatar
-                    sx={{ width: '60px', height: '60px' }}
-                    alt={item.title}
-                    src={item.image}
-                />
-            </ListItemAvatar>
-            <ListItemText color='text.main' primary={item.title} />
+        <React.Fragment key={item.id}>
+            <ListItem
+                onMouseDown={() => navigate(`/item/${item.id}`)}
+                sx={{ gap: '10px', cursor: 'pointer' }}
+            >
+                <ListItemAvatar>
+                    <Avatar
+                        sx={{ width: '60px', height: '60px' }}
+                        alt={item.title}
+                        src={item.image}
+                    />
+                </ListItemAvatar>
+                <ListItemText color='text.main' primary={item.title} />
+            </ListItem>
             <Divider />
-        </ListItem>
+        </React.Fragment>
     ))
 
     return (
@@ -125,6 +131,7 @@ export const Header: React.FC = () => {
                     <List
                         disablePadding
                         sx={{
+                            minWidth:'275px',
                             maxWidth: '500px',
                             height: '150px',
                             overflowY: 'scroll',

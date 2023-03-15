@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
     Grid,
     ToggleButtonGroup,
@@ -15,19 +15,12 @@ import {
 
 import { ProductCard, IProductCard } from '../card'
 import { getItemsProduct } from '../../redux/selectors'
-import { productListActions } from '../../redux/actions'
 import { loadingLayoutJSX } from '../loadingLayout'
 
 export const ProductCardList: React.FC = () => {
-    const dispatch = useDispatch()
-
     const [category, setCategory] = useState('all')
     const [carts, setCarts] = useState<IProductCard[]>([])
     const [filter, setFilter] = useState('')
-
-    useEffect(() => {
-        dispatch(productListActions.fetchTaskAsync())
-    }, [dispatch])
 
     const items = useSelector(getItemsProduct)
 
