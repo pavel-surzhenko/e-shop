@@ -22,6 +22,7 @@ export const MainCarousel: React.FC = () => {
                     height: { xs: '200px', md: '400px' },
                     m: '0 auto',
                     backgroundSize: 'contain',
+                    cursor: 'pointer',
                 }}
                 onClick={() => navigate(`/item/${item.id}`)}
             />
@@ -31,6 +32,8 @@ export const MainCarousel: React.FC = () => {
     return (
         <Box m='25px auto'>
             <Carousel
+                swipeable
+                transitionTime={1000}
                 autoPlay
                 interval={3000}
                 infiniteLoop

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -5,15 +6,21 @@ import { styled, alpha } from '@mui/material/styles'
 import { ShoppingBasket } from '@mui/icons-material'
 import {
     AppBar,
+    Avatar,
     Badge,
+    Divider,
     IconButton,
     InputBase,
+    List,
+    ListItem,
+    ListItemAvatar,
+    ListItemText,
     Toolbar,
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import { cartActions } from '../../redux/actions'
-import { getCart } from '../../redux/selectors'
+import { getCart, getItemsProduct } from '../../redux/selectors'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -50,7 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         [theme.breakpoints.up('sm')]: {
             width: '12ch',
             '&:focus': {
-                width: '20ch',
+                width: '40ch',
             },
         },
     },
@@ -59,7 +66,34 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export const Header: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const cart = useSelector(getCart)    
+    const cart = useSelector(getCart)
+    const allItems = useSelector(getItemsProduct)
+
+    const [searchItemName, setSearchItemName] = useState('')
+
+    const searchItems = allItems.filter(
+        (item) =>
+            item.title.toLowerCase().includes(searchItemName.toLowerCase()) &&
+            searchItemName.length > 0
+    )
+
+    const searchItemsListJSX = searchItems.map((item) => (
+        <ListItem
+            onMouseDown={() => navigate(`/item/${item.id}`)}
+            sx={{ gap: '10px', cursor: 'pointer' }}
+            key={item.id}
+        >
+            <ListItemAvatar>
+                <Avatar
+                    sx={{ width: '60px', height: '60px' }}
+                    alt={item.title}
+                    src={item.image}
+                />
+            </ListItemAvatar>
+            <ListItemText color='text.main' primary={item.title} />
+            <Divider />
+        </ListItem>
+    ))
 
     return (
         <AppBar position='static'>
@@ -81,21 +115,41 @@ export const Header: React.FC = () => {
                         <SearchIcon />
                     </SearchIconWrapper>
                     <StyledInputBase
+                        onFocus={(e) => setSearchItemName(e.target.value)}
+                        onBlur={() => setSearchItemName('')}
+                        onChange={(e) => setSearchItemName(e.target.value)}
                         type='search'
                         placeholder='Search…'
                         inputProps={{ 'aria-label': 'search' }}
                     />
+                    <List
+                        disablePadding
+                        sx={{
+                            maxWidth: '500px',
+                            height: '150px',
+                            overflowY: 'scroll',
+                            position: 'absolute',
+                            left: '0',
+                            top: '40px',
+                            backgroundColor: 'primary.main',
+                            borderRadius: '3px',
+                            zIndex: '100',
+                            display: searchItems.length ? 'block' : 'none',
+                        }}
+                    >
+                        {searchItemsListJSX}
+                    </List>
                 </Search>
                 <Badge
                     badgeContent={cart.length}
                     color='error'
                     invisible={cart.length === 0}
                     sx={{
-                            right: 5,
-                            top: 5,
-                            padding: '0 3px',
-                            height: '14px',
-                            minWidth: '13px',
+                        right: 5,
+                        top: 5,
+                        padding: '0 3px',
+                        height: '14px',
+                        minWidth: '13px',
                     }}
                 >
                     <IconButton
