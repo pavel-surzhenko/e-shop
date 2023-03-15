@@ -4,7 +4,7 @@ import {
     Box,
     Button,
     Divider,
-    Drawer,
+    SwipeableDrawer,
     IconButton,
     Typography,
 } from '@mui/material'
@@ -25,21 +25,20 @@ export const CartMenu: React.FC = () => {
     const cart = useSelector(getCart)
     const isCartOpen = useSelector(setIsCartOpen)
 
-    const totalPrice = cart.reduce(
-        (total, item) => total + item.count * item.price,
-        0
-    ).toFixed(2)
+    const totalPrice = cart
+        .reduce((total, item) => total + item.count * item.price, 0)
+        .toFixed(2)
 
     const itemsJSX = cart.map((item) => (
         <Box key={item.id}>
-            <FlexBox padding='15px 0' key={item.id}>
+            <FlexBox padding='15px 0' key={item.id} gap='10px'>
                 <Box
                     flex='1 1 40%'
                     onClick={() => {
                         navigate(`/item/${item.id}`)
                         dispatch(cartActions.setIsCartOpen())
                     }}
-                    sx={{cursor: 'pointer'}}
+                    sx={{ cursor: 'pointer' }}
                 >
                     <img
                         alt={item.title}
@@ -90,60 +89,51 @@ export const CartMenu: React.FC = () => {
     ))
 
     return (
-        <Drawer
+        <SwipeableDrawer
             anchor='right'
             open={isCartOpen}
+            onOpen={() => dispatch(cartActions.setIsCartOpen())}
             onClose={() => dispatch(cartActions.setIsCartOpen())}
         >
-            <Box
-                position='fixed'
-                right='0'
-                bottom='0'
-                width='max(400px, 30%)'
-                height='100%'
-                bgcolor='white'
-            >
-                <Box padding='30px' overflow='auto' height='100%'>
-                    <FlexBox mb='15px'>
-                        <Typography variant='h4'>Shopping bag</Typography>
-                        <IconButton
-                            onClick={() =>
-                                dispatch(cartActions.setIsCartOpen())
-                            }
-                        >
-                            <Close />
-                        </IconButton>
-                    </FlexBox>
+            <Box padding='30px' overflow='auto' height='100%' sx={{width: {xs: '100%', sm: '400px'}}}>
+                <FlexBox mb='15px'>
+                    <Typography variant='h4'>Shopping bag</Typography>
+                    <IconButton
+                        onClick={() => dispatch(cartActions.setIsCartOpen())}
+                    >
+                        <Close />
+                    </IconButton>
+                </FlexBox>
 
-                    <Box>{itemsJSX}</Box>
-                    <Box m='20px 0'>
-                        <FlexBox m='20px 0'>
-                            <Typography fontWeight='bold' variant='h6'>
-                                TOTAL
-                            </Typography>
-                            <Typography fontWeight='bold' variant='h6'>
-                                ${totalPrice}
-                            </Typography>
-                        </FlexBox>
-                        <Button
-                            color='primary'
-                            variant='contained'
-                            sx={{
-                                borderRadius: 0,
-                                minWidth: '100%',
-                                padding: '20px 40px',
-                                m: '20px 0',
-                            }}
-                            onClick={() => {
-                                navigate('/checkout')
-                                dispatch(cartActions.setIsCartOpen())
-                            }}
-                        >
-                            CHECKOUT
-                        </Button>
-                    </Box>
+                <Box>{itemsJSX}</Box>
+                <Box m='20px 0'>
+                    <FlexBox m='20px 0'>
+                        <Typography fontWeight='bold' variant='h6'>
+                            TOTAL
+                        </Typography>
+                        <Typography fontWeight='bold' variant='h6'>
+                            ${totalPrice}
+                        </Typography>
+                    </FlexBox>
+                    <Button
+                        disabled={!cart.length}
+                        color='primary'
+                        variant='contained'
+                        sx={{
+                            borderRadius: 0,
+                            minWidth: '100%',
+                            padding: '20px 40px',
+                            m: '20px 0',
+                        }}
+                        onClick={() => {
+                            navigate('/checkout')
+                            dispatch(cartActions.setIsCartOpen())
+                        }}
+                    >
+                        CHECKOUT
+                    </Button>
                 </Box>
             </Box>
-        </Drawer>
+        </SwipeableDrawer>
     )
 }

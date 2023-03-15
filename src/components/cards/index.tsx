@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -15,6 +16,7 @@ import {
 import { ProductCard, IProductCard } from '../card'
 import { getItemsProduct } from '../../redux/selectors'
 import { productListActions } from '../../redux/actions'
+import { loadingLayoutJSX } from '../loadingLayout'
 
 export const ProductCardList: React.FC = () => {
     const dispatch = useDispatch()
@@ -30,7 +32,7 @@ export const ProductCardList: React.FC = () => {
     const items = useSelector(getItemsProduct)
 
     useEffect(() => {
-        setCarts(items.concat([]))
+        setCarts([...items])
     }, [items])
 
     const handleChange = (
@@ -68,7 +70,7 @@ export const ProductCardList: React.FC = () => {
     }
 
     const cardsJSX = carts.map((cart) => (
-            <ProductCard key={cart.id} {...cart} />
+        <ProductCard key={cart.id} {...cart} />
     ))
 
     return (
@@ -77,17 +79,18 @@ export const ProductCardList: React.FC = () => {
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    flexDirection: { xs: 'column', md: 'row' },
+                    flexDirection: { xs: 'column', sm: 'row' },
                 }}
             >
                 <ToggleButtonGroup
+                    fullWidth
                     size='small'
                     color='info'
                     value={category}
                     exclusive
                     onChange={handleChange}
                     aria-label='Platform'
-                    sx={{ marginBottom: '20px' }}
+                    sx={{ mb: '20px', mr: '20px' }}
                 >
                     <ToggleButton value='all'>All</ToggleButton>
                     <ToggleButton value={`men's clothing`}>Men`s</ToggleButton>
@@ -97,7 +100,10 @@ export const ProductCardList: React.FC = () => {
                     <ToggleButton value='jewelery'>Jewelry</ToggleButton>
                     <ToggleButton value='electronics'>Electronics</ToggleButton>
                 </ToggleButtonGroup>
-                <FormControl sx={{ minWidth: '100px', mb: '20px' }} size='small'>
+                <FormControl
+                    sx={{ minWidth: '100px', mb: '20px' }}
+                    size='small'
+                >
                     <InputLabel id='filter'>filter</InputLabel>
                     <Select
                         autoWidth
@@ -126,7 +132,7 @@ export const ProductCardList: React.FC = () => {
                 </FormControl>
             </Box>
             <Grid container spacing={2}>
-                {cardsJSX}
+                {carts.length ? cardsJSX : loadingLayoutJSX}
             </Grid>
         </>
     )
