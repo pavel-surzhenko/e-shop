@@ -1,7 +1,7 @@
 import { Grid, Skeleton, Box } from '@mui/material'
 
 export const loadingLayoutJSX: JSX.Element[] = Array.from(
-    { length: 8 },
+    { length: 4 },
     (_, i) => (
         <Grid key={i} item xs={12} sm={6} md={4} lg={3}>
             <Box

@@ -1,10 +1,22 @@
-import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { CartMenu, Footer, Header } from './components'
 import { ProductCardsPage, ProductDetailsPage } from './pages'
+
+const ScrollToTop = () => {
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
+    return null
+}
 
 export const App: React.FC = () => {
     return (
         <>
+            <ScrollToTop />
             <Header />
             <Routes>
                 <Route path='/' element={<ProductCardsPage />} />

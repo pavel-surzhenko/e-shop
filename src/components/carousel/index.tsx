@@ -49,7 +49,7 @@ export const MainCarousel: React.FC = () => {
                             zIndex: '10',
                         }}
                     >
-                        <NavigateBefore sx={{ fontSize: 40 }} />
+                        <NavigateBefore color='primary' sx={{ fontSize: 40 }} />
                     </IconButton>
                 )}
                 renderArrowNext={(onClickHandler) => (
@@ -64,7 +64,7 @@ export const MainCarousel: React.FC = () => {
                             zIndex: '10',
                         }}
                     >
-                        <NavigateNext sx={{ fontSize: 40 }} />
+                        <NavigateNext color='primary' sx={{ fontSize: 40 }} />
                     </IconButton>
                 )}
             >
