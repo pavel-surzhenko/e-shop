@@ -68,7 +68,7 @@ export const Header: React.FC = () => {
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(productListActions.fetchCardsAsync())
     }, [dispatch])
 
@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
     const searchItems = allItems.filter(
         (item) =>
             item.title.toLowerCase().includes(searchItemName.toLowerCase()) &&
-            searchItemName.length > 0
+            searchItemName
     )
 
     const searchItemsListJSX = searchItems.map((item) => (
@@ -131,9 +131,9 @@ export const Header: React.FC = () => {
                     <List
                         disablePadding
                         sx={{
-                            minWidth:'275px',
+                            minWidth: '275px',
                             maxWidth: '500px',
-                            height: '150px',
+                            maxHeight: '150px',
                             overflowY: 'scroll',
                             position: 'absolute',
                             left: '0',
@@ -141,10 +141,19 @@ export const Header: React.FC = () => {
                             backgroundColor: 'primary.main',
                             borderRadius: '3px',
                             zIndex: '100',
-                            display: searchItems.length ? 'block' : 'none',
+                            display: searchItemName ? 'block' : 'none',
                         }}
                     >
-                        {searchItemsListJSX}
+                        {searchItems.length === 0 && searchItemName && (
+                            <ListItem>
+                                <ListItemText
+                                    color='text.main'
+                                    primary='Nothing was found according to your request. Refine your request'
+                                />
+                            </ListItem>
+                        )}
+
+                        {searchItems.length > 0 && searchItemsListJSX}
                     </List>
                 </Search>
                 <Badge
