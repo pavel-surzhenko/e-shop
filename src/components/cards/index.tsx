@@ -69,7 +69,7 @@ export const ProductCardList: React.FC = () => {
         }
     }
 
-    const cardsJSX = carts.map((cart) => (
+    const cardsJSX: JSX.Element[] = carts.map((cart) => (
         <ProductCard key={cart.id} {...cart} />
     ))
 

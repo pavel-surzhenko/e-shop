@@ -11,16 +11,14 @@ import {
     Skeleton,
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { useItemDetails } from '../../hooks'
 import { cartActions } from '../../redux/actions'
+import { IProductCard } from '../card'
 
-export const CardDetails:React.FC = () => {
+export const CardDetails:React.FC<IProductCardDetails> = (props) => {
     const dispatch= useDispatch()
     const count = 1
-    const { itemId } = useParams()
 
-    const { data, isFetched } = useItemDetails(itemId as string)
+    const { data, isFetched } = props
 
     return (
         <Box>
@@ -153,4 +151,9 @@ export const CardDetails:React.FC = () => {
             </Card>
         </Box>
     )
+}
+
+export interface IProductCardDetails {
+    data: IProductCard
+    isFetched: boolean
 }
