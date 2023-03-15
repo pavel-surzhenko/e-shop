@@ -3,15 +3,15 @@ import { api } from "../api";
 import { IProductCard } from "../components/card";
 
 export const useSimilarProductList = (category: string): SimilarProductListReturn => {
-    const { data, isFetched } = useQuery<IProductCard>(['itemsByCategory', category], () => api.carts.getCartsById(id), { retry: false })
+    const { data, isFetched } = useQuery<IProductCard[]>(['itemsByCategory', category], () => api.carts.getCartsCategory(category), { retry: false })
 
     return {
-        data: data as IProductCard || {},
+        data: data as IProductCard[] || [],
         isFetched
     }
 };
 
 type SimilarProductListReturn = {
-    data: IProductCard
+    data: IProductCard[]
     isFetched: boolean
 }
