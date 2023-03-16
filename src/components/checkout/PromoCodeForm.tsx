@@ -15,8 +15,9 @@ export const PromoCodeForm: React.FC = () => {
                     id='outlined-basic'
                     label='Promo code'
                     variant='outlined'
+                    sx={{ '& .MuiInputBase-root':{borderRadius:'4px 0 0 4px'}}}
                 />
-                <Button variant='contained' disabled={!promoCode.length}>Apply</Button>
+                <Button variant='contained' sx={{ borderRadius:'0 4px 4px 0'}} disabled={!promoCode.length}>Apply</Button>
             </Box>
     );
 };

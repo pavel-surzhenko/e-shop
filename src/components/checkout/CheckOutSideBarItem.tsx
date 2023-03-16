@@ -1,5 +1,5 @@
 import { Delete, Remove, Add } from '@mui/icons-material'
-import { Box, Typography, CardMedia, IconButton } from '@mui/material'
+import { Box, Typography, IconButton } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { cartActions } from '../../redux/actions'
@@ -11,7 +11,7 @@ export const CheckOutSideBarItem: React.FC = () => {
     const cartItems = useSelector(getCart)
 
     const cartItemsJSX = cartItems.map((item) => (
-        <Box display='flex' justifyContent='space-between' gap='15px'>
+        <Box key={item.id} display='flex' justifyContent='space-between' gap='15px'>
             <Box
                 sx={{
                     objectFit: 'contain',
@@ -24,8 +24,7 @@ export const CheckOutSideBarItem: React.FC = () => {
                     alt={item.title}
                     height='150px'
                     src={item.image}
-                    style={{objectFit: 'contain',
-                    maxWidth: '100%'}}
+                    style={{ objectFit: 'contain', maxWidth: '100%' }}
                 />
             </Box>
             <Box sx={{ flex: '0 1 70%' }} display='flex' flexDirection='column'>
