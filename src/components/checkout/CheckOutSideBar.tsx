@@ -25,11 +25,12 @@ export const CheckOutSideBar: React.FC = () => {
         .toFixed(2)  
 
     return (
-        <Paper elevation={3} sx={{ flex: '0 1 40%', p: '10px', ml: '20px' }}>
+        <Paper elevation={3} sx={{ flex: '0 1 40%', p: '30px 20px', ml: '20px'}}>
             <Box
                 display='flex'
                 justifyContent='space-between'
                 color='primary.main'
+                mb='15px'
             >
                 <Box display='flex' alignItems='center'>
                     <ShoppingBasket sx={{ mr: '10px' }} />
@@ -39,18 +40,18 @@ export const CheckOutSideBar: React.FC = () => {
             </Box>
             <CheckOutSideBarItem />
             <PromoCodeForm />
-            <Divider />
+            <Divider sx={{mb:'10px'}}/>
             <Box display='flex' justifyContent='space-between' mb='7px'>
-                <Typography variant='body2'>Subtotal</Typography>
-                <Typography variant='body2'>${totalPrice}</Typography>
+                <Typography fontWeight='400' variant='h6'>Subtotal</Typography>
+                <Typography fontWeight='400' variant='h6'>${totalPrice}</Typography>
             </Box>
             <Box display='flex' justifyContent='space-between' mb='7px'>
-                <Typography variant='body2'>Discount</Typography>
-                <Typography variant='body2'>$0</Typography>
+                <Typography fontWeight='400' variant='h6'>Discount</Typography>
+                <Typography fontWeight='400' variant='h6'>$0</Typography>
             </Box>
             <Box display='flex' justifyContent='space-between' mb='7px'>
-                <Typography variant='subtitle2'>Total</Typography>
-                <Typography variant='subtitle2'>${totalPrice}</Typography>
+                <Typography fontWeight='500' variant='h5'>Total</Typography>
+                <Typography fontWeight='500' variant='h5'>${totalPrice}</Typography>
             </Box>
         </Paper>
     )

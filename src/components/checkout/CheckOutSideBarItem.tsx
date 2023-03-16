@@ -11,24 +11,29 @@ export const CheckOutSideBarItem: React.FC = () => {
     const cartItems = useSelector(getCart)
 
     const cartItemsJSX = cartItems.map((item) => (
-        <Box display='flex' justifyContent='space-between'>
-            <CardMedia
-                component='img'
-                alt={item.title}
-                height='150'
-                image={`${item.image}`}
+        <Box display='flex' justifyContent='space-between' gap='15px'>
+            <Box
                 sx={{
                     objectFit: 'contain',
                     cursor: 'pointer',
                     flex: '0 0 30%',
                 }}
                 onClick={() => navigate(`/item/${item.id}`)}
-            />
-            <Box sx={{ flex: '0 1 70%' }}>
+            >
+                <img
+                    alt={item.title}
+                    height='150px'
+                    src={item.image}
+                    style={{objectFit: 'contain',
+                    maxWidth: '100%'}}
+                />
+            </Box>
+            <Box sx={{ flex: '0 1 70%' }} display='flex' flexDirection='column'>
                 <Box
                     display='flex'
-                    alignItems='center'
                     justifyContent='space-between'
+                    alignItems='start'
+                    flexGrow='1'
                 >
                     <Typography variant='subtitle1'>{item.title}</Typography>
                     <IconButton
@@ -44,7 +49,7 @@ export const CheckOutSideBarItem: React.FC = () => {
                     alignItems='center'
                     justifyContent='space-between'
                 >
-                    <Typography variant='subtitle1'>{item.price}</Typography>
+                    <Typography variant='subtitle1'>{item.price}$</Typography>
                     <Box display='flex' alignItems='center'>
                         <IconButton
                             onClick={() =>
@@ -67,5 +72,9 @@ export const CheckOutSideBarItem: React.FC = () => {
         </Box>
     ))
 
-    return <Box>{cartItemsJSX}</Box>
+    return (
+        <Box display='flex' flexDirection='column' gap='20px' mb='25px'>
+            {cartItemsJSX}
+        </Box>
+    )
 }

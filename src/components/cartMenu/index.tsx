@@ -45,6 +45,8 @@ export const CartMenu: React.FC = () => {
                         width='123px'
                         height='164px'
                         src={item.image}
+                        style={{objectFit: 'contain',
+                        maxWidth: '100%'}}
                     />
                 </Box>
                 <Box flex='1 1 60%'>
