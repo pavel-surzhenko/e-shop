@@ -11,12 +11,10 @@ import {
     Typography,
 } from '@mui/material'
 import { useState } from 'react'
+import { EmailStep } from './EmailStep'
 
 export const CheckOutStepper: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0)
-    const [email, setEmail] = useState('')
-
-    const isEmailValid = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
     const handleNext = () =>
         setActiveStep((prevActiveStep) => prevActiveStep + 1)
@@ -35,49 +33,7 @@ export const CheckOutStepper: React.FC = () => {
                 orientation='vertical'
             >
                 <Step>
-                    <Paper variant='outlined' sx={{ p: '15px' }}>
-                        <StepLabel
-                            sx={{
-                                '& .MuiStepLabel-label': { fontSize: '20px' },
-                            }}
-                        >
-                            Email
-                        </StepLabel>
-                        <StepContent>
-                            <Box display='flex' m='15px 0'>
-                                <TextField
-                                    error={!isEmailValid()}
-                                    type='email'
-                                    id='outlined-basic'
-                                    label='Enter your email'
-                                    variant='outlined'
-                                    sx={{
-                                        flexBasis: '50%',
-                                        '& .MuiInputBase-root': {
-                                            borderRadius: '4px 0 0 4px',
-                                        },
-                                    }}
-                                    value={email}
-                                    onChange={(
-                                        event: React.ChangeEvent<HTMLInputElement>
-                                    ) => {
-                                        setEmail(event.target.value)
-                                    }}
-                                />
-                                <Button
-                                    sx={{ borderRadius: '0 4px 4px 0' }}
-                                    variant='contained'
-                                    disabled={!isEmailValid()}
-                                >
-                                    Enter
-                                </Button>
-                            </Box>
-                            <Typography color='text.secondary' variant='body2'>
-                                By providing you email, you agree to our Privacy
-                                Policy
-                            </Typography>
-                        </StepContent>
-                    </Paper>
+                    <EmailStep />
                 </Step>
                 <Step>
                     <Paper variant='outlined' sx={{ p: '15px' }}>
@@ -109,7 +65,6 @@ export const CheckOutStepper: React.FC = () => {
                     Back
                 </Button>
                 <Button
-                    disabled={activeStep === 2 || !isEmailValid()}
                     variant='contained'
                     color='primary'
                     onClick={handleNext}
