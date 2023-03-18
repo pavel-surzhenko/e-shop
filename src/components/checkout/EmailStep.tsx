@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react'
 import {
     Paper,
     StepLabel,
     StepContent,
-    Box,
     TextField,
     Button,
     Typography,
     FormControl,
 } from '@mui/material'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm, useWatch } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { IEmailForm, schema } from './config'
 
 export const EmailStep: React.FC = () => {
