@@ -10,9 +10,9 @@ import {
     Typography,
     FormGroup,
 } from '@mui/material'
+import { grey } from '@mui/material/colors'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { ErrorMessage } from '@hookform/error-message'
 import { IShippingForm, schemaShipping } from './config'
 
 const Form = styled('form')(({ theme }) => ({
@@ -37,6 +37,8 @@ export const ShippingStep: React.FC = () => {
         handleSubmit,
         formState: { errors },
         register,
+        trigger,
+        setValue
     } = useForm<IShippingForm>({
         mode: 'all',
         resolver: yupResolver(schemaShipping),
@@ -53,12 +55,18 @@ export const ShippingStep: React.FC = () => {
             ...formValues,
             [event.target.name]: event.target.value,
         })
+        trigger(event.target.name as keyof IShippingForm)
+        setValue(event.target.name as keyof IShippingForm, event.target.value, {
+            shouldValidate: true,
+            shouldDirty: true,
+            shouldTouch: true,
+        })
     }
 
     return (
         <Paper
             variant='outlined'
-            sx={{ p: '15px', backgroundColor: '#fafafa' }}
+            sx={{ p: '15px', backgroundColor: grey[100] }}
         >
             <StepLabel
                 sx={{
@@ -78,7 +86,6 @@ export const ShippingStep: React.FC = () => {
                                 value={formValues.city}
                                 onChange={handleChange}
                             />
-                            
                         </FormControl>
                         <FormControl>
                             <TextField

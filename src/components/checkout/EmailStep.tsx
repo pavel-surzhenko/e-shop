@@ -7,6 +7,7 @@ import {
     Typography,
     FormControl,
 } from '@mui/material'
+import { grey } from '@mui/material/colors'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { IEmailForm, schemaEmail } from './config'
@@ -20,7 +21,7 @@ export const EmailStep: React.FC = () => {
     const isValid = (): boolean => !formState.isValid
 
     return (
-        <Paper variant='outlined' sx={{ p: '15px', backgroundColor:'#fafafa' }}>
+        <Paper variant='outlined' sx={{ p: '15px', backgroundColor: grey[100] }}>
             <StepLabel
                 sx={{
                     '& .MuiStepLabel-label': { fontSize: '20px' },
