@@ -38,12 +38,11 @@ export const ShippingStep: React.FC = () => {
         formState: { errors },
         register,
         trigger,
-        setValue
+        setValue,
     } = useForm<IShippingForm>({
         mode: 'all',
         resolver: yupResolver(schemaShipping),
     })
-    console.log(errors)
 
     const onSubmit = handleSubmit((data: IShippingForm) => {
         console.log('Form Values:', formValues)
@@ -77,9 +76,17 @@ export const ShippingStep: React.FC = () => {
             </StepLabel>
             <StepContent>
                 <Form onSubmit={onSubmit}>
-                    <FormGroup>
-                        <FormControl>
+                    <FormGroup
+                        sx={{
+                            '& .MuiFormControl-root': {
+                                width: '100%',
+                                maxWidth: '45ch',
+                            },
+                        }}
+                    >
+                        <FormControl sx={{ maxWidth: '45ch' }}>
                             <TextField
+                                fullWidth
                                 label='City'
                                 error={!!errors?.city}
                                 {...register('city')}

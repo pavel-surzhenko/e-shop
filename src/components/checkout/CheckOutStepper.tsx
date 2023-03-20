@@ -1,17 +1,14 @@
 import {
-    Box,
     Button,
     Paper,
     Step,
     StepConnector,
-    StepContent,
-    StepLabel,
     Stepper,
-    TextField,
     Typography,
 } from '@mui/material'
 import { useState } from 'react'
 import { EmailStep } from './EmailStep'
+import { PaymentStep } from './PaymentStep'
 import { ShippingStep } from './ShippingStep'
 
 export const CheckOutStepper: React.FC = () => {
@@ -40,16 +37,7 @@ export const CheckOutStepper: React.FC = () => {
                     <ShippingStep />
                 </Step>
                 <Step>
-                    <Paper variant='outlined' sx={{ p: '15px' }}>
-                        <StepLabel
-                            sx={{
-                                '& .MuiStepLabel-label': { fontSize: '20px' },
-                            }}
-                        >
-                            Payment
-                        </StepLabel>
-                        <StepContent>234234</StepContent>
-                    </Paper>
+                    <PaymentStep />
                 </Step>
             </Stepper>
             <div>

@@ -6,6 +6,7 @@ import {
     Button,
     Typography,
     FormControl,
+    Box,
 } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -21,7 +22,10 @@ export const EmailStep: React.FC = () => {
     const isValid = (): boolean => !formState.isValid
 
     return (
-        <Paper variant='outlined' sx={{ p: '15px', backgroundColor: grey[100] }}>
+        <Paper
+            variant='outlined'
+            sx={{ p: '15px', backgroundColor: grey[100] }}
+        >
             <StepLabel
                 sx={{
                     '& .MuiStepLabel-label': { fontSize: '20px' },
@@ -30,43 +34,39 @@ export const EmailStep: React.FC = () => {
                 Email
             </StepLabel>
             <StepContent>
-                <FormControl
-                    sx={{ display: 'flex', m: '15px 0', flexDirection: 'row' }}
-                >
-                    <TextField
-                        required
-                        error={!!formState.errors.email}
-                        {...register('email')}
-                        type='email'
-                        id='outlined-basic'
-                        label='Enter your email'
-                        variant='outlined'
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <FormControl
                         sx={{
-                            flexBasis: '50%',
-                            '& .MuiInputBase-root': {
-                                borderRadius: '4px 0 0 4px',
-                            },
+                            m: '8px 0 16px 0', maxWidth:'50ch'
                         }}
-                        onChange={(
-                            event: React.ChangeEvent<HTMLInputElement>
-                        ) => {
-                            trigger('email')
-                            setValue('email', event.target.value, {
-                                shouldValidate: true,
-                                shouldDirty: true,
-                                shouldTouch: true,
-                            })
-                        }}
-                    />
+                    >
+                        <TextField
+                            error={!!formState.errors.email}
+                            {...register('email')}
+                            type='email'
+                            label='Enter your email'
+                            variant='outlined'
+                            onChange={(
+                                event: React.ChangeEvent<HTMLInputElement>
+                            ) => {
+                                trigger('email')
+                                setValue('email', event.target.value, {
+                                    shouldValidate: true,
+                                    shouldDirty: true,
+                                    shouldTouch: true,
+                                })
+                            }}
+                        />
+                    </FormControl>
                     <Button
                         type='submit'
-                        sx={{ borderRadius: '0 4px 4px 0' }}
                         variant='contained'
                         disabled={isValid()}
+                        sx={{ alignSelf: 'start', mb: '15px' }}
                     >
-                        Enter
+                        Next
                     </Button>
-                </FormControl>
+                </Box>
                 <Typography color='text.secondary' variant='body2'>
                     By providing you email, you agree to our Privacy Policy
                 </Typography>
