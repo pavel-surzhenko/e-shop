@@ -1,5 +1,4 @@
 import {
-    Button,
     Paper,
     Step,
     StepConnector,
@@ -31,27 +30,21 @@ export const CheckOutStepper: React.FC = () => {
                 orientation='vertical'
             >
                 <Step>
-                    <EmailStep />
+                    <EmailStep onStepCompleted={handleNext} />
                 </Step>
                 <Step>
-                    <ShippingStep />
+                    <ShippingStep
+                        onStepCompleted={handleNext}
+                        onStepBack={handleBack}
+                    />
                 </Step>
                 <Step>
-                    <PaymentStep />
+                    <PaymentStep
+                        onStepCompleted={handleNext}
+                        onStepBack={handleBack}
+                    />
                 </Step>
             </Stepper>
-            <div>
-                <Button disabled={activeStep === 0} onClick={handleBack}>
-                    Back
-                </Button>
-                <Button
-                    variant='contained'
-                    color='primary'
-                    onClick={handleNext}
-                >
-                    Next
-                </Button>
-            </div>
         </Paper>
     )
 }

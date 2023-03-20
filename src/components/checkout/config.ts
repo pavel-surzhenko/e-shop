@@ -40,9 +40,15 @@ export interface IPaymentForm {
 export const Form = styled('form')(() => ({
     display: 'flex',
     flexDirection: 'column',
-    marginTop:'8px',
+    marginTop: '8px',
     '& .MuiFormControl-root': {
-        maxWidth:'45ch',
-        marginBottom:'16px'
+        maxWidth: '45ch',
+        marginBottom: '16px'
     },
+}))
+
+export const Div = styled('div')(() => ({
+    display: 'flex',
+    marginBottom: '16px',
+    gap: '15px'
 }))

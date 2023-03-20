@@ -12,9 +12,12 @@ import {
 import { grey } from '@mui/material/colors'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Form, IPaymentForm, schemaPayment } from './config'
+import { Form, IPaymentForm, schemaPayment, Div } from './config'
 
-export const PaymentStep: React.FC = () => {
+export const PaymentStep: React.FC<PaymentStepProps> = ({
+    onStepCompleted,
+    onStepBack,
+}) => {
     const [formValues, setFormValues] = useState({
         card: '',
         expiration: '',
@@ -23,7 +26,7 @@ export const PaymentStep: React.FC = () => {
 
     const {
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
         register,
         trigger,
         setValue,
@@ -45,9 +48,10 @@ export const PaymentStep: React.FC = () => {
         })
     }
 
+    const isValidForm = (): boolean => !isValid
+
     const onSubmit = handleSubmit((data: IPaymentForm) => {
-        console.log('Form Values:', formValues)
-        console.log(errors)
+        onStepCompleted()
     })
 
     return (
@@ -105,14 +109,17 @@ export const PaymentStep: React.FC = () => {
                             onChange={handleChange}
                         ></TextField>
                     </FormGroup>
-                    <Button
-                        variant='contained'
-                        color='primary'
-                        type='submit'
-                        sx={{ alignSelf: 'start', mb: '15px' }}
-                    >
-                        Finish
-                    </Button>
+                    <Div>
+                        <Button onClick={() => onStepBack()}>Back</Button>
+                        <Button
+                            variant='contained'
+                            color='primary'
+                            type='submit'
+                            disabled={isValidForm()}
+                        >
+                            Finish
+                        </Button>
+                    </Div>
                 </Form>
                 <Typography color='text.secondary' variant='body2'>
                     All information is protected and private
@@ -120,4 +127,9 @@ export const PaymentStep: React.FC = () => {
             </StepContent>
         </Paper>
     )
+}
+
+interface PaymentStepProps {
+    onStepCompleted: () => void
+    onStepBack: () => void
 }

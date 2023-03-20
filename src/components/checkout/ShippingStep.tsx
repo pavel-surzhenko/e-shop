@@ -13,9 +13,12 @@ import { grey } from '@mui/material/colors'
 import { LocalShippingOutlined } from '@mui/icons-material'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Form, IShippingForm, schemaShipping } from './config'
+import { Form, IShippingForm, schemaShipping, Div } from './config'
 
-export const ShippingStep: React.FC = () => {
+export const ShippingStep: React.FC<ShippingStepProps> = ({
+    onStepCompleted,
+    onStepBack,
+}) => {
     const [formValues, setFormValues] = useState({
         city: '',
         address: '',
@@ -26,7 +29,7 @@ export const ShippingStep: React.FC = () => {
 
     const {
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
         register,
         trigger,
         setValue,
@@ -36,8 +39,7 @@ export const ShippingStep: React.FC = () => {
     })
 
     const onSubmit = handleSubmit((data: IShippingForm) => {
-        console.log('Form Values:', formValues)
-        console.log(errors)
+        onStepCompleted()
     })
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +54,8 @@ export const ShippingStep: React.FC = () => {
             shouldTouch: true,
         })
     }
+
+    const isValidForm = (): boolean => !isValid as boolean
 
     return (
         <Paper
@@ -121,14 +125,17 @@ export const ShippingStep: React.FC = () => {
                             />
                         </FormControl>
                     </FormGroup>
-                    <Button
-                        variant='contained'
-                        color='primary'
-                        type='submit'
-                        sx={{ alignSelf: 'start', mb: '15px' }}
-                    >
-                        Next
-                    </Button>
+                    <Div>
+                        <Button onClick={() => onStepBack()}>Back</Button>
+                        <Button
+                            variant='contained'
+                            color='primary'
+                            type='submit'
+                            disabled={isValidForm()}
+                        >
+                            Next
+                        </Button>
+                    </Div>
                 </Form>
                 <Typography color='text.secondary' variant='body2'>
                     Please check that the address and recipient are correct
@@ -136,4 +143,9 @@ export const ShippingStep: React.FC = () => {
             </StepContent>
         </Paper>
     )
+}
+
+interface ShippingStepProps {
+    onStepCompleted: () => void
+    onStepBack: () => void
 }

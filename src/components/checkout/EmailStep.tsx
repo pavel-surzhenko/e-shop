@@ -12,15 +12,20 @@ import { grey } from '@mui/material/colors'
 import { EmailOutlined } from '@mui/icons-material'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { IEmailForm, schemaEmail } from './config'
+import { Form, IEmailForm, schemaEmail } from './config'
 
-export const EmailStep: React.FC = () => {
-    const { register, formState, trigger, setValue } = useForm<IEmailForm>({
+export const EmailStep: React.FC<EmailStepProps> = ({onStepCompleted}) => {
+    const { register, formState, trigger, setValue, handleSubmit } = useForm<IEmailForm>({
         mode: 'all',
         reValidateMode: 'onChange',
         resolver: yupResolver(schemaEmail),
     })
+
     const isValid = (): boolean => !formState.isValid
+
+    const onSubmit = handleSubmit((data: IEmailForm) => {
+        onStepCompleted()
+    })
 
     return (
         <Paper
@@ -39,7 +44,7 @@ export const EmailStep: React.FC = () => {
                 <EmailOutlined sx={{ mr: '5px' }} /> Email
             </StepLabel>
             <StepContent>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Form onSubmit={onSubmit}>
                     <FormControl
                         sx={{
                             m: '8px 0 16px 0',
@@ -72,11 +77,15 @@ export const EmailStep: React.FC = () => {
                     >
                         Next
                     </Button>
-                </Box>
+                </Form>
                 <Typography color='text.secondary' variant='body2'>
                     By providing you email, you agree to our Privacy Policy
                 </Typography>
             </StepContent>
         </Paper>
     )
+}
+
+interface EmailStepProps {
+    onStepCompleted: () => void
 }
