@@ -9,18 +9,18 @@ import {
 } from '@mui/material'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { IEmailForm, schema } from './config'
+import { IEmailForm, schemaEmail } from './config'
 
 export const EmailStep: React.FC = () => {
     const { register, formState, trigger, setValue } = useForm<IEmailForm>({
         mode: 'all',
         reValidateMode: 'onChange',
-        resolver: yupResolver(schema),
+        resolver: yupResolver(schemaEmail),
     })
-    const isValid = () => !formState.isValid
+    const isValid = (): boolean => !formState.isValid
 
     return (
-        <Paper variant='outlined' sx={{ p: '15px' }}>
+        <Paper variant='outlined' sx={{ p: '15px', backgroundColor:'#fafafa' }}>
             <StepLabel
                 sx={{
                     '& .MuiStepLabel-label': { fontSize: '20px' },
@@ -33,6 +33,7 @@ export const EmailStep: React.FC = () => {
                     sx={{ display: 'flex', m: '15px 0', flexDirection: 'row' }}
                 >
                     <TextField
+                        required
                         error={!!formState.errors.email}
                         {...register('email')}
                         type='email'

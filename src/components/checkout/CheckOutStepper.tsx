@@ -12,6 +12,7 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import { EmailStep } from './EmailStep'
+import { ShippingStep } from './ShippingStep'
 
 export const CheckOutStepper: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0)
@@ -24,8 +25,8 @@ export const CheckOutStepper: React.FC = () => {
 
     return (
         <Paper elevation={3} sx={{ flex: '0 1 60%', p: '25px' }}>
-            <Typography textAlign='center' variant='h4' gutterBottom>
-                Please enter all details
+            <Typography textAlign='center' variant='h5' gutterBottom>
+                Please enter all details for order
             </Typography>
             <Stepper
                 connector={<StepConnector sx={{ visibility: 'hidden' }} />}
@@ -36,16 +37,7 @@ export const CheckOutStepper: React.FC = () => {
                     <EmailStep />
                 </Step>
                 <Step>
-                    <Paper variant='outlined' sx={{ p: '15px' }}>
-                        <StepLabel
-                            sx={{
-                                '& .MuiStepLabel-label': { fontSize: '20px' },
-                            }}
-                        >
-                            Shipping
-                        </StepLabel>
-                        <StepContent>234234</StepContent>
-                    </Paper>
+                    <ShippingStep />
                 </Step>
                 <Step>
                     <Paper variant='outlined' sx={{ p: '15px' }}>
