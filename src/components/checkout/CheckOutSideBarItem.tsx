@@ -11,12 +11,13 @@ export const CheckOutSideBarItem: React.FC = () => {
     const cartItems = useSelector(getCart)
 
     const cartItemsJSX = cartItems.map((item) => (
-        <Box key={item.id} display='flex' justifyContent='space-between' gap='15px'>
+        <Box key={item.id} display='flex' justifyContent='space-between' gap='10px'>
             <Box
                 sx={{
                     objectFit: 'contain',
                     cursor: 'pointer',
                     flex: '0 0 30%',
+                    mr:'5px'
                 }}
                 onClick={() => navigate(`/item/${item.id}`)}
             >

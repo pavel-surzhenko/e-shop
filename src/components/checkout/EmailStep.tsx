@@ -6,7 +6,6 @@ import {
     Button,
     Typography,
     FormControl,
-    Box,
 } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { EmailOutlined } from '@mui/icons-material'
@@ -14,12 +13,13 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { Form, IEmailForm, schemaEmail } from './config'
 
-export const EmailStep: React.FC<EmailStepProps> = ({onStepCompleted}) => {
-    const { register, formState, trigger, setValue, handleSubmit } = useForm<IEmailForm>({
-        mode: 'all',
-        reValidateMode: 'onChange',
-        resolver: yupResolver(schemaEmail),
-    })
+export const EmailStep: React.FC<EmailStepProps> = ({ onStepCompleted }) => {
+    const { register, formState, trigger, setValue, handleSubmit } =
+        useForm<IEmailForm>({
+            mode: 'all',
+            reValidateMode: 'onChange',
+            resolver: yupResolver(schemaEmail),
+        })
 
     const isValid = (): boolean => !formState.isValid
 

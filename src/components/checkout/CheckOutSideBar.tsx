@@ -16,7 +16,11 @@ export const CheckOutSideBar: React.FC = () => {
     return (
         <Paper
             elevation={3}
-            sx={{ flex: '0 1 40%', p: '30px 20px', ml: '20px' }}
+            sx={{
+                flex: '0 1 40%',
+                p: '30px 20px',
+                ml: { xs: '0', md: '20px' },
+            }}
         >
             <Box
                 display='flex'

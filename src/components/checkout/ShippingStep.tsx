@@ -61,6 +61,7 @@ export const ShippingStep: React.FC<ShippingStepProps> = ({
         <Paper
             variant='outlined'
             sx={{ p: '15px', backgroundColor: grey[100] }}
+            id='2'
         >
             <StepLabel
                 sx={{

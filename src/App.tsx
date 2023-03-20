@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { CartMenu, Footer, Header } from './components'
 import { CheckOutPage, ProductCardsPage, ProductDetailsPage } from './pages'
 
-const ScrollToTop = () => {
+export const ScrollToTop = () => {
     const { pathname } = useLocation()
 
     useEffect(() => {
