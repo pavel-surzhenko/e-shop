@@ -1,4 +1,3 @@
-import { styled } from '@mui/material/styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
     Paper,
@@ -11,18 +10,10 @@ import {
     FormGroup,
 } from '@mui/material'
 import { grey } from '@mui/material/colors'
+import { LocalShippingOutlined } from '@mui/icons-material'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { IShippingForm, schemaShipping } from './config'
-
-const Form = styled('form')(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    '& .MuiFormControl-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
-    },
-}))
+import { Form, IShippingForm, schemaShipping } from './config'
 
 export const ShippingStep: React.FC = () => {
     const [formValues, setFormValues] = useState({
@@ -69,22 +60,20 @@ export const ShippingStep: React.FC = () => {
         >
             <StepLabel
                 sx={{
-                    '& .MuiStepLabel-label': { fontSize: '20px' },
+                    '& .MuiStepLabel-label': {
+                        fontSize: '20px',
+                        alignItems: 'center',
+                        display: 'flex',
+                    },
                 }}
             >
-                Shiping
+                <LocalShippingOutlined sx={{ mr: '5px' }} />
+                Shipping
             </StepLabel>
             <StepContent>
                 <Form onSubmit={onSubmit}>
-                    <FormGroup
-                        sx={{
-                            '& .MuiFormControl-root': {
-                                width: '100%',
-                                maxWidth: '45ch',
-                            },
-                        }}
-                    >
-                        <FormControl sx={{ maxWidth: '45ch' }}>
+                    <FormGroup>
+                        <FormControl>
                             <TextField
                                 fullWidth
                                 label='City'
@@ -138,7 +127,7 @@ export const ShippingStep: React.FC = () => {
                         type='submit'
                         sx={{ alignSelf: 'start', mb: '15px' }}
                     >
-                        Submit
+                        Next
                     </Button>
                 </Form>
                 <Typography color='text.secondary' variant='body2'>

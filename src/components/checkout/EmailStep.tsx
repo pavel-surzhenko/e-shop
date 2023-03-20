@@ -9,6 +9,7 @@ import {
     Box,
 } from '@mui/material'
 import { grey } from '@mui/material/colors'
+import { EmailOutlined } from '@mui/icons-material'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { IEmailForm, schemaEmail } from './config'
@@ -28,16 +29,21 @@ export const EmailStep: React.FC = () => {
         >
             <StepLabel
                 sx={{
-                    '& .MuiStepLabel-label': { fontSize: '20px' },
+                    '& .MuiStepLabel-label': {
+                        fontSize: '20px',
+                        alignItems: 'center',
+                        display: 'flex',
+                    },
                 }}
             >
-                Email
+                <EmailOutlined sx={{ mr: '5px' }} /> Email
             </StepLabel>
             <StepContent>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <FormControl
                         sx={{
-                            m: '8px 0 16px 0', maxWidth:'50ch'
+                            m: '8px 0 16px 0',
+                            maxWidth: '50ch',
                         }}
                     >
                         <TextField
