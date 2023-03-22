@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "https://pavel-surzhenko.github.io/e-shop/static/css/main.7c370611.chunk.css",
-    "main.js": "https://pavel-surzhenko.github.io/e-shop/static/js/main.4d022d0f.chunk.js",
-    "main.js.map": "https://pavel-surzhenko.github.io/e-shop/static/js/main.4d022d0f.chunk.js.map",
-    "runtime-main.js": "https://pavel-surzhenko.github.io/e-shop/static/js/runtime-main.33f5c92b.js",
-    "runtime-main.js.map": "https://pavel-surzhenko.github.io/e-shop/static/js/runtime-main.33f5c92b.js.map",
-    "static/css/2.795a966d.chunk.css": "https://pavel-surzhenko.github.io/e-shop/static/css/2.795a966d.chunk.css",
-    "static/js/2.95b9647f.chunk.js": "https://pavel-surzhenko.github.io/e-shop/static/js/2.95b9647f.chunk.js",
-    "static/js/2.95b9647f.chunk.js.map": "https://pavel-surzhenko.github.io/e-shop/static/js/2.95b9647f.chunk.js.map",
-    "index.html": "https://pavel-surzhenko.github.io/e-shop/index.html",
-    "static/css/2.795a966d.chunk.css.map": "https://pavel-surzhenko.github.io/e-shop/static/css/2.795a966d.chunk.css.map",
-    "static/css/main.7c370611.chunk.css.map": "https://pavel-surzhenko.github.io/e-shop/static/css/main.7c370611.chunk.css.map",
-    "static/js/2.95b9647f.chunk.js.LICENSE.txt": "https://pavel-surzhenko.github.io/e-shop/static/js/2.95b9647f.chunk.js.LICENSE.txt"
+    "main.css": "/e-shop/static/css/main.7c370611.chunk.css",
+    "main.js": "/e-shop/static/js/main.da8fe4b8.chunk.js",
+    "main.js.map": "/e-shop/static/js/main.da8fe4b8.chunk.js.map",
+    "runtime-main.js": "/e-shop/static/js/runtime-main.6677b12e.js",
+    "runtime-main.js.map": "/e-shop/static/js/runtime-main.6677b12e.js.map",
+    "static/css/2.795a966d.chunk.css": "/e-shop/static/css/2.795a966d.chunk.css",
+    "static/js/2.2bae933f.chunk.js": "/e-shop/static/js/2.2bae933f.chunk.js",
+    "static/js/2.2bae933f.chunk.js.map": "/e-shop/static/js/2.2bae933f.chunk.js.map",
+    "index.html": "/e-shop/index.html",
+    "static/css/2.795a966d.chunk.css.map": "/e-shop/static/css/2.795a966d.chunk.css.map",
+    "static/css/main.7c370611.chunk.css.map": "/e-shop/static/css/main.7c370611.chunk.css.map",
+    "static/js/2.2bae933f.chunk.js.LICENSE.txt": "/e-shop/static/js/2.2bae933f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.33f5c92b.js",
+    "static/js/runtime-main.6677b12e.js",
     "static/css/2.795a966d.chunk.css",
-    "static/js/2.95b9647f.chunk.js",
+    "static/js/2.2bae933f.chunk.js",
     "static/css/main.7c370611.chunk.css",
-    "static/js/main.4d022d0f.chunk.js"
+    "static/js/main.da8fe4b8.chunk.js"
   ]
 }
