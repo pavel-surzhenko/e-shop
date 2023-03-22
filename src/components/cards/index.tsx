@@ -97,7 +97,7 @@ export const ProductCardList: React.FC = () => {
                     sx={{ minWidth: '100px', mb: '20px' }}
                     size='small'
                 >
-                    <InputLabel id='filter'>filter</InputLabel>
+                    <InputLabel id='filter'>Sort</InputLabel>
                     <Select
                         autoWidth
                         labelId='filter'

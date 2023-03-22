@@ -7,11 +7,12 @@ import {
     StepContent,
     StepLabel,
     TextField,
-    Typography,
+    Typography
 } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+
 import { Form, IPaymentForm, schemaPayment, Div } from './config'
 
 export const PaymentStep: React.FC<PaymentStepProps> = ({
@@ -79,7 +80,8 @@ export const PaymentStep: React.FC<PaymentStepProps> = ({
                         {...register('card')}
                         value={formValues.card}
                         onChange={handleChange}
-                    ></TextField>
+                        
+                    /> 
                     <FormGroup
                         sx={{
                             display: 'flex',
@@ -98,7 +100,7 @@ export const PaymentStep: React.FC<PaymentStepProps> = ({
                             {...register('expiration')}
                             value={formValues.expiration}
                             onChange={handleChange}
-                        ></TextField>
+                        />
                         <TextField
                             type='password'
                             fullWidth
@@ -107,7 +109,7 @@ export const PaymentStep: React.FC<PaymentStepProps> = ({
                             {...register('cvv')}
                             value={formValues.cvv}
                             onChange={handleChange}
-                        ></TextField>
+                        />
                     </FormGroup>
                     <Div>
                         <Button onClick={() => onStepBack()}>Back</Button>

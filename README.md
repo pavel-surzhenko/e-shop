@@ -1,46 +1,37 @@
-# Getting Started with Create React App
+# React App "E-shop"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Wellcome! 🚀
 
-## Available Scripts
 
-In the project directory, you can run:
+This is my study react-project ecommerce shop
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The main page consists of a slider (react-responsive-carousel), a list of products that can be sorted and filtered depending on the need.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="./src/screens/main.png" alt='main' width="500" height='300'>
 
-### `npm test`
+You can also use the search field at the top to quickly find a product.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="./src/screens/search.png" alt='main' width="500" height='300'>
 
-### `npm run build`
+By clicking on the cart, a list of products that the user has added to the cart opens.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="./src/screens/cart.png" alt='main' width="500" height='300'>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The product page consists of complete information about the product, as well as a list of similar products of the same category
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="./src/screens/product.png" alt='main' width="500" height='300'>
 
-### `npm run eject`
+The ordering page consists of a list of the products that the user is ordering, and if necessary, he can change the number of products or delete an extra one and a block with information on the order.
+Registration is completed in three stages, the user needs to enter the mail, delivery address and pay for the order.
+All fields use validation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="./src/screens/checkout.png" alt='main' width="500" height='300'>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+> All information is taken from FakeStore API. 
+Using react libraries like redux, redux-thunk, redux-persist, router, react-query, hooks, react-hook-form with yup validation, axios etc.
+All styles are made by Material-UI
+---
