@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
 import { cartActions } from '../../redux/actions'
 import { getCart, setIsCartOpen } from '../../redux/selectors'
 
@@ -45,8 +46,7 @@ export const CartMenu: React.FC = () => {
                         width='123px'
                         height='164px'
                         src={item.image}
-                        style={{objectFit: 'contain',
-                        maxWidth: '100%'}}
+                        style={{ objectFit: 'contain', maxWidth: '100%' }}
                     />
                 </Box>
                 <Box flex='1 1 60%'>
@@ -97,7 +97,12 @@ export const CartMenu: React.FC = () => {
             onOpen={() => dispatch(cartActions.setIsCartOpen())}
             onClose={() => dispatch(cartActions.setIsCartOpen())}
         >
-            <Box padding='30px' overflow='auto' height='100%' sx={{width: {xs: '100%', sm: '400px'}}}>
+            <Box
+                padding='30px'
+                overflow='auto'
+                height='100%'
+                sx={{ width: { xs: '100%', sm: '400px' } }}
+            >
                 <FlexBox mb='15px'>
                     <Typography variant='h4'>Shopping bag</Typography>
                     <IconButton

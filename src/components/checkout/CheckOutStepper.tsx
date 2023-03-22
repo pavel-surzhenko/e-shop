@@ -1,7 +1,9 @@
 import { Paper, Step, StepConnector, Stepper, Typography } from '@mui/material'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+
 import { getCart } from '../../redux/selectors'
+
 import { EmailStep } from './EmailStep'
 import { PaymentStep } from './PaymentStep'
 import { ShippingStep } from './ShippingStep'

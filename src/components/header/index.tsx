@@ -17,8 +17,10 @@ import {
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
+
 import { cartActions } from '../../redux/actions'
 import { getCart, getItemsProduct } from '../../redux/selectors'
+
 import { SearchIconWrapper, StyledInputBase, Search } from './style'
 
 export const Header: React.FC = () => {

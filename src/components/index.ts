@@ -1,5 +1,5 @@
 export { Header } from './header'
-export { ProductCardList } from './cards'
+export { ProductCardList } from './cardList'
 export { ProductCard } from './card'
 export { Footer } from './footer'
 export { CardDetails } from './cardDetails'

@@ -13,9 +13,10 @@ import {
     Box,
 } from '@mui/material'
 
-import { ProductCard, IProductCard } from '../card'
 import { getItemsProduct } from '../../redux/selectors'
+
 import { loadingLayoutJSX } from '../loadingLayout'
+import { ProductCard, IProductCard } from '../card'
 
 export const ProductCardList: React.FC = () => {
     const [category, setCategory] = useState('all')

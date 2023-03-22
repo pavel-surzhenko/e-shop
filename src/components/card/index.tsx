@@ -11,11 +11,12 @@ import {
 import { ShoppingCart } from '@mui/icons-material'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
 import { cartActions } from '../../redux/actions'
 
 export const ProductCard: React.FC<IProductCard> = (props) => {
     const { image, title, category, price, rating, id } = props
-    const count = 1;
+    const count = 1
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -44,7 +45,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                     alt={title}
                     height='150'
                     image={`${image}`}
-                    sx={{ objectFit: 'contain', cursor:'pointer' }}
+                    sx={{ objectFit: 'contain', cursor: 'pointer' }}
                     onClick={() => navigate(`/item/${id}`)}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -53,7 +54,7 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                         gutterBottom
                         variant='subtitle1'
                         component='div'
-                        sx={{cursor: 'pointer'}}
+                        sx={{ cursor: 'pointer' }}
                     >
                         {title}
                     </Typography>
@@ -66,8 +67,8 @@ export const ProductCard: React.FC<IProductCard> = (props) => {
                         color='primary'
                         variant='contained'
                         endIcon={<ShoppingCart />}
-                        onClick={()=> {
-                            dispatch(cartActions.addToCart({...props, count}))
+                        onClick={() => {
+                            dispatch(cartActions.addToCart({ ...props, count }))
                             dispatch(cartActions.setIsCartOpen())
                         }}
                     >

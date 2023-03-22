@@ -9,8 +9,10 @@ import {
 } from '@mui/material'
 import { grey } from '@mui/material/colors'
 import { EmailOutlined } from '@mui/icons-material'
+
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+
 import { Form, IEmailForm, schemaEmail } from './config'
 
 export const EmailStep: React.FC<EmailStepProps> = ({ onStepCompleted }) => {

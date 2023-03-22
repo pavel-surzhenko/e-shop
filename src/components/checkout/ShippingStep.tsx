@@ -13,6 +13,7 @@ import { grey } from '@mui/material/colors'
 import { LocalShippingOutlined } from '@mui/icons-material'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+
 import { Form, IShippingForm, schemaShipping, Div } from './config'
 
 export const ShippingStep: React.FC<ShippingStepProps> = ({
@@ -38,7 +39,7 @@ export const ShippingStep: React.FC<ShippingStepProps> = ({
         resolver: yupResolver(schemaShipping),
     })
 
-    const onSubmit = handleSubmit((data: IShippingForm) => {
+    const onSubmit = handleSubmit(() => {
         onStepCompleted()
     })
 

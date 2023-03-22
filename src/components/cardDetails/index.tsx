@@ -12,10 +12,11 @@ import {
 } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../../redux/actions'
+
 import { IProductCard } from '../card'
 
-export const CardDetails:React.FC<IProductCardDetails> = (props) => {
-    const dispatch= useDispatch()
+export const CardDetails: React.FC<IProductCardDetails> = (props) => {
+    const dispatch = useDispatch()
     const count = 1
 
     const { data, isFetched } = props
@@ -47,7 +48,7 @@ export const CardDetails:React.FC<IProductCardDetails> = (props) => {
                         variant='rectangular'
                         width={300}
                         height={400}
-                        sx={{m:'20px auto'}}
+                        sx={{ m: '20px auto' }}
                     />
                 )}
 
@@ -121,7 +122,7 @@ export const CardDetails:React.FC<IProductCardDetails> = (props) => {
                                     variant='rectangular'
                                     width={150}
                                     height={50}
-                                    sx={{ml: '-8px'}}
+                                    sx={{ ml: '-8px' }}
                                 />
                             )}
                             {isFetched ? (
@@ -130,10 +131,15 @@ export const CardDetails:React.FC<IProductCardDetails> = (props) => {
                                     color='primary'
                                     variant='contained'
                                     endIcon={<ShoppingCart />}
-                                    onClick={()=> {
-                                        dispatch(cartActions.addToCart({...data, count})) 
-                                        dispatch(cartActions.setIsCartOpen())}
-                                    }
+                                    onClick={() => {
+                                        dispatch(
+                                            cartActions.addToCart({
+                                                ...data,
+                                                count,
+                                            })
+                                        )
+                                        dispatch(cartActions.setIsCartOpen())
+                                    }}
                                 >
                                     Buy
                                 </Button>

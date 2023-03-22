@@ -2,9 +2,11 @@ import { useNavigate } from 'react-router-dom'
 import { NavigateBefore, NavigateNext } from '@mui/icons-material'
 import { Box, CardMedia, IconButton, Typography } from '@mui/material'
 import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useSelector } from 'react-redux'
+
 import { getItemsProduct } from '../../redux/selectors'
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 export const MainCarousel: React.FC = () => {
     const items = useSelector(getItemsProduct)

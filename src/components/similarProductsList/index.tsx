@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { useSimilarProductList } from '../../hooks'
+
 import { ProductCard } from '../card'
 import { loadingLayoutJSX } from '../loadingLayout'
 

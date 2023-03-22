@@ -51,7 +51,7 @@ export const PaymentStep: React.FC<PaymentStepProps> = ({
 
     const isValidForm = (): boolean => !isValid
 
-    const onSubmit = handleSubmit((data: IPaymentForm) => {
+    const onSubmit = handleSubmit(() => {
         onStepCompleted()
     })
 
