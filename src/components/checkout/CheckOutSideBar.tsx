@@ -1,7 +1,7 @@
 import { ShoppingBasket } from '@mui/icons-material'
 import { Box, Typography, Paper, Divider } from '@mui/material'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getCart } from '../../redux/selectors'
 import { CheckOutSideBarItem } from './CheckOutSideBarItem'
 import { PromoCodeForm } from './PromoCodeForm'

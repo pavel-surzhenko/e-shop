@@ -2,18 +2,24 @@ import { render } from 'react-dom'
 import { QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import { App } from './App'
+import { PersistGate } from 'redux-persist/integration/react'
 import { queryClient } from './hooks/queryClient'
+
+import { persister, store } from './redux/init/store'
+
+import { App } from './App'
+
 import './index.css'
-import { store } from './redux/init/store'
 
 render(
     <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </QueryClientProvider>
+        <PersistGate loading={null} persistor={persister}>
+            <QueryClientProvider client={queryClient}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </QueryClientProvider>
+        </PersistGate>
     </Provider>,
     document.getElementById('root'),
     () => {
