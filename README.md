@@ -13,11 +13,11 @@ The main page consists of a slider (react-responsive-carousel), a list of produc
 
 You can also use the search field at the top to quickly find a product.
 
-<img src="./src/screens/search.png" alt='main' width="400" height='250'>
+<img src="./src/screens/search.png" alt='main' width="289" height='150'>
 
 By clicking on the cart, a list of products that the user has added to the cart opens.
 
-<img src="./src/screens/cart.png" alt='main' width="300" height='500'>
+<img src="./src/screens/cart.png" alt='main' width="276" height='405'>
 
 The product page consists of complete information about the product, as well as a list of similar products of the same category
 
