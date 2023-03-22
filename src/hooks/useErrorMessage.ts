@@ -14,5 +14,5 @@ export const useErrorMessage = ():void => {
             toast.error(errorMessage, toastOptionsError)
             dispatch(authActions.resetError())
         }
-    }, [errorMessage])
+    }, [dispatch, errorMessage])
 };
