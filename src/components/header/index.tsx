@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -19,7 +19,7 @@ import {
     Typography,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import { cartActions, productListActions } from '../../redux/actions'
+import { cartActions } from '../../redux/actions'
 import { getCart, getItemsProduct } from '../../redux/selectors'
 
 const Search = styled('div')(({ theme }) => ({
@@ -67,10 +67,6 @@ export const Header: React.FC = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
-
-    useEffect(() => {
-        dispatch(productListActions.fetchCardsAsync())
-    }, [dispatch])
 
     const allItems = useSelector(getItemsProduct)
 
