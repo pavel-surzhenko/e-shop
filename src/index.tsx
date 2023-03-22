@@ -1,7 +1,7 @@
 import { render } from 'react-dom'
 import { QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 import { queryClient } from './hooks/queryClient'
 
@@ -16,9 +16,9 @@ render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persister}>
             <QueryClientProvider client={queryClient}>
-                <BrowserRouter basename={process.env.PUBLIC_URL}>
+                <HashRouter>
                     <App />
-                </BrowserRouter>
+                </HashRouter>
             </QueryClientProvider>
         </PersistGate>
     </Provider>,
