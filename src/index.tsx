@@ -10,6 +10,7 @@ import { persister, store } from './redux/init/store'
 import { App } from './App'
 
 import './index.css'
+import 'material-react-toastify/dist/ReactToastify.css'
 
 render(
     <Provider store={store}>
