@@ -37,7 +37,7 @@ export const ProductCardList: React.FC = () => {
             setCategory(newCategory)
             setCarts(items.filter((item) => item.category === newCategory))
             if (newCategory === 'all') {
-                setCarts(items.concat([]))
+                setCarts([...items])
             }
         }
     }
